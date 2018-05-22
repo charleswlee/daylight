@@ -22,4 +22,33 @@ class Storage {
         return nil
     }
     
+    class func isGPSEnabled() -> (Bool) {
+        return UserDefaults.standard.bool(forKey: "gps")
+    }
+    
+    class func setGPSState(enabled: Bool) {
+        UserDefaults.standard.set(enabled, forKey: "gps")
+        UserDefaults.standard.synchronize()
+    }
+    
+    class func isNotFirstRun() -> (Bool) {
+        return UserDefaults.standard.bool(forKey: "not_first_run")
+    }
+    
+    class func setIsNotFirstRun() {
+        UserDefaults.standard.set(true, forKey: "not_first_run")
+    }
+    
+    class func getZipCode() -> (String?) {
+        if let zip = UserDefaults.standard.string(forKey: "zip") {
+            return zip
+        }
+        return nil
+    }
+    
+    class func setZipCode(zip: String) {
+        UserDefaults.standard.set(zip, forKey: "zip")
+        UserDefaults.standard.synchronize()
+    }
+    
 }

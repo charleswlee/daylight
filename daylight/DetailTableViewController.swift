@@ -42,7 +42,7 @@ class DetailTableViewController: UITableViewController {
                 let hours = len / 3600
                 let minutes = (len - (3600 * hours))/60
                 let seconds = (len - (3600 * hours)) % 60
-                self.length.text = "\(hours):\(minutes):\(seconds)"
+                self.length.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
             }
         }
         

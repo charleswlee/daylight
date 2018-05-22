@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let loc : Location = Location()
+    var loc : Location?
     
     @IBOutlet weak var sunriseLabel: UILabel!
 
@@ -21,29 +21,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let savedData = Storage.getData() {
-            self.data = savedData
-            self.loadData()
-        }
-        
-        loc.locationAcquired = {
-            (lat,long) -> Void in
-            API.getSunriseSunsetForLat(lat, long: long) { (success, resultObject) in
-                if(success) {
-                    Storage.saveData(dataObj: resultObject!)
-                    self.data = resultObject
-                    self.loadData()
-                } else {
-                    print("Failed to get data!")
-                }
+        if(Storage.isNotFirstRun()) {
+            
+            if let savedData = Storage.getData() {
+                self.data = savedData
+                self.loadData()
             }
+            
+            if(Storage.isGPSEnabled()) {
+                self.getSunriseSunsetWithGPS()
+            } else {
+                self.getSunriseSunsetWithZip()
+            }
+            
+        } else {
+            self.performSegue(withIdentifier: "setup", sender: self)
         }
-        loc.getLocation()
     }
     
     func loadData() {
@@ -54,6 +53,36 @@ class ViewController: UIViewController {
         
             self.sunriseLabel.text = sunrise
             self.sunsetLabel.text = sunset
+        }
+    }
+    
+    func getDataFor(lat: String, long: String) {
+        APICalls.getSunriseSunsetForLat(lat, long: long) { (success, resultObject) in
+            if(success) {
+                Storage.saveData(dataObj: resultObject!)
+                self.data = resultObject
+                self.loadData()
+            } else {
+                print("Failed to get data!")
+            }
+        }
+    }
+    
+    func getSunriseSunsetWithGPS() {
+        self.loc = Location()
+        loc?.locationAcquired = {
+            (lat,long) -> Void in
+            self.getDataFor(lat: lat,long: long)
+        }
+        loc?.getLocation()
+    }
+    
+    func getSunriseSunsetWithZip(){
+        if let zip = Storage.getZipCode() {
+            let (lat,long) = Zip2LatLong.getLatLongForZip(zip: zip)
+            if(lat != nil && long != nil) {
+                self.getDataFor(lat: lat!,long: long!)
+            }
         }
     }
 
@@ -69,6 +98,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
 }
 

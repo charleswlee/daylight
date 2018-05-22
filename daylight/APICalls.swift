@@ -8,7 +8,7 @@
 
 import UIKit
 
-class API {
+class APICalls {
     
     class func getSunriseSunsetForLat(_ lat: String, long: String, result: @escaping (_ succes: Bool, _ jsonresult:[String: Any]?) -> Void) {
         
