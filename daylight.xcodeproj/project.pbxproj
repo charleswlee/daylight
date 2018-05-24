@@ -12,7 +12,7 @@
 		8A9ECC9F20B3009C00D7A556 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9ECC9E20B3009C00D7A556 /* Storage.swift */; };
 		8A9ECCA120B30D0300D7A556 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9ECCA020B30D0300D7A556 /* DetailTableViewController.swift */; };
 		8AB31E6A20B0CE1F00E11DF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB31E6920B0CE1F00E11DF6 /* AppDelegate.swift */; };
-		8AB31E6C20B0CE1F00E11DF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB31E6B20B0CE1F00E11DF6 /* ViewController.swift */; };
+		8AB31E6C20B0CE1F00E11DF6 /* DaylightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB31E6B20B0CE1F00E11DF6 /* DaylightViewController.swift */; };
 		8AB31E6F20B0CE1F00E11DF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB31E6D20B0CE1F00E11DF6 /* Main.storyboard */; };
 		8AB31E7120B0CE2000E11DF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AB31E7020B0CE2000E11DF6 /* Assets.xcassets */; };
 		8AB31E7420B0CE2000E11DF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB31E7220B0CE2000E11DF6 /* LaunchScreen.storyboard */; };
@@ -31,7 +31,7 @@
 		8A9ECCA020B30D0300D7A556 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		8AB31E6620B0CE1F00E11DF6 /* daylight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = daylight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB31E6920B0CE1F00E11DF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8AB31E6B20B0CE1F00E11DF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8AB31E6B20B0CE1F00E11DF6 /* DaylightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaylightViewController.swift; sourceTree = "<group>"; };
 		8AB31E6E20B0CE1F00E11DF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AB31E7020B0CE2000E11DF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AB31E7320B0CE2000E11DF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,22 +74,22 @@
 		8AB31E6820B0CE1F00E11DF6 /* daylight */ = {
 			isa = PBXGroup;
 			children = (
-				8AB31E6920B0CE1F00E11DF6 /* AppDelegate.swift */,
-				8AB31E6B20B0CE1F00E11DF6 /* ViewController.swift */,
-				8AB31E6D20B0CE1F00E11DF6 /* Main.storyboard */,
-				8AB31E7020B0CE2000E11DF6 /* Assets.xcassets */,
-				8AB31E7220B0CE2000E11DF6 /* LaunchScreen.storyboard */,
 				8AB31E7520B0CE2000E11DF6 /* Info.plist */,
-				8AB31E7B20B0CF5700E11DF6 /* Location.swift */,
 				8AB31E7D20B0D1B500E11DF6 /* APICalls.swift */,
-				8A9ECC9A20B2F75800D7A556 /* SunriseSunsetOrgAPICreditViewController.swift */,
+				8AB31E6920B0CE1F00E11DF6 /* AppDelegate.swift */,
 				8A9ECC9C20B2FAD800D7A556 /* DateUtil.swift */,
-				8A9ECC9E20B3009C00D7A556 /* Storage.swift */,
+				8AB31E6B20B0CE1F00E11DF6 /* DaylightViewController.swift */,
 				8A9ECCA020B30D0300D7A556 /* DetailTableViewController.swift */,
-				AAC5E9C620B487BE0068F657 /* zipcodes.json */,
+				8AB31E7B20B0CF5700E11DF6 /* Location.swift */,
 				AAC5E9CA20B49F460068F657 /* SettingsTableViewController.swift */,
 				8ACA774720B4D08500BCBF9B /* SetupViewController.swift */,
+				8A9ECC9E20B3009C00D7A556 /* Storage.swift */,
+				8A9ECC9A20B2F75800D7A556 /* SunriseSunsetOrgAPICreditViewController.swift */,
 				8ACA774920B4D41900BCBF9B /* Zip2LatLong.swift */,
+				8AB31E7020B0CE2000E11DF6 /* Assets.xcassets */,
+				8AB31E7220B0CE2000E11DF6 /* LaunchScreen.storyboard */,
+				8AB31E6D20B0CE1F00E11DF6 /* Main.storyboard */,
+				AAC5E9C620B487BE0068F657 /* zipcodes.json */,
 			);
 			path = daylight;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AB31E6C20B0CE1F00E11DF6 /* ViewController.swift in Sources */,
+				8AB31E6C20B0CE1F00E11DF6 /* DaylightViewController.swift in Sources */,
 				8ACA774A20B4D41900BCBF9B /* Zip2LatLong.swift in Sources */,
 				8A9ECC9F20B3009C00D7A556 /* Storage.swift in Sources */,
 				8AB31E7C20B0CF5700E11DF6 /* Location.swift in Sources */,

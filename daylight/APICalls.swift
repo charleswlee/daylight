@@ -1,5 +1,5 @@
 //
-//  API.swift
+//  APICalls.swift
 //  daylight
 //
 //  Created by Charles Lee on 5/21/18.
@@ -10,10 +10,11 @@ import UIKit
 
 class APICalls {
     
-    class func getSunriseSunsetForLat(_ lat: String, long: String, result: @escaping (_ succes: Bool, _ jsonresult:[String: Any]?) -> Void) {
+    // Call API to get the sunrise and sunset info
+    class func getSunriseSunsetForLat(_ lat: String, long: String, date: String, result: @escaping (_ succes: Bool, _ jsonresult:[String: Any]?) -> Void) {
         
-        let stringURL = "https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+long+"&formatted=0"
-        
+        let stringURL = "https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+long+"&date="+date+"&formatted=0"
+  
         let url = URL(string:stringURL )
         let session = URLSession.shared
         let task = session.dataTask(with: url!, completionHandler: { (data, response, error) in

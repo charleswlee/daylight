@@ -51,8 +51,9 @@ class SettingsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // if GPS is enabled hide the zip code field
         if (Storage.isGPSEnabled()) {
             return 1
         } else {
@@ -60,28 +61,11 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    func getLatLongForZip(zip: String) -> (String?,String?)
-    {
-        if let filePath = Bundle.main.path(forResource: "zipcodes", ofType: "json"), let data = NSData(contentsOfFile: filePath) {
-            do {
-                let json :  [String: Any] = (try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: Any])!
-                if let latlong = json[zip] as? [String:Any],
-                    let lat =  latlong["LAT"] as? String,
-                    let long = latlong["LNG"] as? String {
-                        return (lat,long)
-                }
-            }
-            catch {
-                print("Error getting Lat Long for zip")
-            }
-        }
-         return (nil,nil)
-    }
-    
     @objc func switchChanged(s: UISwitch) {
         let on = s.isOn
         Storage.setGPSState(enabled: on)
         
+        // update the table when the switch is flipped 
         tableView.reloadData()
     }
     
@@ -167,14 +151,17 @@ extension SettingsTableViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        // allow empty
         if (string.isEmpty) {
             return true
         }
         
+        // don't allow over 5 charactors
         if (range.location > 4) {
             return false
         }
         
+        // only allow numbers
         if (textField == self.zipTextField) {
             let cs = NSCharacterSet(charactersIn: "0123456789")
             let filtered = string.components(separatedBy: cs as CharacterSet).filter {  !$0.isEmpty }

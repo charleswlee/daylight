@@ -32,6 +32,7 @@ class Location: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    // This is called when we get the location we want to call back and disable GPS to save battery
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation
         

@@ -75,14 +75,17 @@ extension SetupViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        // allow empty
         if (string.isEmpty) {
             return true
         }
         
+        // don't allow over 5 charactors
         if (range.location > 4) {
             return false
         }
         
+        // only allow numbers
         if (textField == self.zipTextField) {
             let cs = NSCharacterSet(charactersIn: "0123456789")
             let filtered = string.components(separatedBy: cs as CharacterSet).filter {  !$0.isEmpty }

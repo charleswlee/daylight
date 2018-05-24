@@ -30,7 +30,6 @@ class DetailTableViewController: UITableViewController {
             self.sunrise.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["sunrise"] as! String)
             self.sunset.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["sunset"] as! String)
             self.solar.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["solar_noon"] as! String)
-            
             self.civilTwilight.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["civil_twilight_begin"] as! String)
             self.civilTwilightEnd.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["civil_twilight_end"] as! String)
             self.astTwilight.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["astronomical_twilight_begin"] as! String)
@@ -38,6 +37,7 @@ class DetailTableViewController: UITableViewController {
             self.nauticalTwilight.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["nautical_twilight_begin"] as! String)
             self.nauticalTwilightEnd.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["nautical_twilight_end"] as! String)
             
+            // Convert day length from seconds to hh:mm:ss with padded zeros for single digits
             if let len = self.data!["day_length"] as? Int {
                 let hours = len / 3600
                 let minutes = (len - (3600 * hours))/60
