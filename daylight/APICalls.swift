@@ -38,5 +38,4 @@ class APICalls {
         })
         task.resume()
     }
-    
 }

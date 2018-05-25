@@ -19,5 +19,4 @@ class DateUtil {
         let parsedDate = isoDateFormat.date(from: string)
         return formatter.string(from: parsedDate!)
     }
-    
 }

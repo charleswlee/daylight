@@ -50,5 +50,4 @@ class Storage {
         UserDefaults.standard.set(zip, forKey: "zip")
         UserDefaults.standard.synchronize()
     }
-    
 }

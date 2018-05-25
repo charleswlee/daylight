@@ -14,8 +14,18 @@ class SetupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SetupViewController.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        zipTextField.inputAccessoryView = toolBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,67 +48,20 @@ class SetupViewController: UIViewController {
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @objc func doneClick() {
+        zipTextField.resignFirstResponder()
     }
-    */
-
 }
 
 extension SetupViewController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        // allow empty
-        if (string.isEmpty) {
-            return true
-        }
-        
-        // don't allow over 5 charactors
-        if (range.location > 4) {
+        guard CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: string)) else {
             return false
         }
         
-        // only allow numbers
-        if (textField == self.zipTextField) {
-            let cs = NSCharacterSet(charactersIn: "0123456789")
-            let filtered = string.components(separatedBy: cs as CharacterSet).filter {  !$0.isEmpty }
-            let str = filtered.joined(separator: "")
-            
-            return (string != str)
-        }
-        
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
-        return true
+        let newLength = (self.zipTextField.text?.utf16.count)! + string.utf16.count - range.length
+        return newLength <= 5
     }
 }

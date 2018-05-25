@@ -10,18 +10,13 @@ import UIKit
 
 class DaylightViewController: UIViewController {
     
-    var loc : Location?
-    
-    var datePicker : UIDatePicker!
-    
     @IBOutlet weak var sunriseLabel: UILabel!
-
     @IBOutlet weak var sunsetLabel: UILabel!
-    
     @IBOutlet weak var dateTextField: UITextField!
     
+    var loc : Location?
+    var datePicker : UIDatePicker!
     var data : [String:Any]?
-    
     var date : Date = Date()
     
     override func viewDidLoad() {
@@ -72,6 +67,7 @@ class DaylightViewController: UIViewController {
     
     func getDataFor(lat: String, long: String) {
         
+        // reformat date for API
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd"
         let dateForAPI = dateFormat.string(from: self.date)
