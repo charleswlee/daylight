@@ -51,12 +51,6 @@
                                     <segue destination="tVy-Fa-E61" kind="show" id="6hn-ig-t0e"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpj-f7-hgb" userLabel="Detail Button">
-                                <rect key="frame" x="0.0" y="104" width="304" height="231"/>
-                                <connections>
-                                    <segue destination="ffl-TO-3kg" kind="show" identifier="detail" id="sv5-gH-vWu"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZc-Hh-XwB">
                                 <rect key="frame" x="16" y="375" width="288" height="30"/>
                                 <nil key="textColor"/>
@@ -68,26 +62,26 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="oqN-25-RWq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8PY-5U-Ftw"/>
                             <constraint firstItem="opw-0S-N2F" firstAttribute="top" secondItem="0QG-Ky-eLG" secondAttribute="bottom" constant="40" id="C8n-X1-bVL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yZc-Hh-XwB" secondAttribute="trailing" constant="16" id="Dlg-5d-7ze"/>
                             <constraint firstItem="BH2-7v-Uny" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Fbc-wi-y07"/>
-                            <constraint firstItem="lpj-f7-hgb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="J2K-17-Ehu"/>
                             <constraint firstItem="yZc-Hh-XwB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="LJN-Ti-4ay"/>
                             <constraint firstItem="oqN-25-RWq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Mr9-NN-GEd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BH2-7v-Uny" secondAttribute="bottom" constant="16" id="OSx-ub-l0A"/>
                             <constraint firstItem="0QG-Ky-eLG" firstAttribute="top" secondItem="rpd-57-PBp" secondAttribute="bottom" constant="40" id="d6F-DM-jjV"/>
-                            <constraint firstItem="lpj-f7-hgb" firstAttribute="top" secondItem="oqN-25-RWq" secondAttribute="top" id="dQ9-kU-6Lr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lpj-f7-hgb" secondAttribute="trailing" constant="16" id="feu-z8-ScN"/>
-                            <constraint firstItem="yZc-Hh-XwB" firstAttribute="top" secondItem="lpj-f7-hgb" secondAttribute="bottom" constant="40" id="j2y-f6-LE6"/>
-                            <constraint firstItem="lpj-f7-hgb" firstAttribute="bottom" secondItem="opw-0S-N2F" secondAttribute="bottom" id="k4S-qZ-IHp"/>
                             <constraint firstItem="0QG-Ky-eLG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="knK-fy-DHM"/>
                             <constraint firstItem="rpd-57-PBp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="p5w-Df-Mhr"/>
                             <constraint firstItem="opw-0S-N2F" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qff-dk-Sit"/>
                             <constraint firstItem="rpd-57-PBp" firstAttribute="top" secondItem="oqN-25-RWq" secondAttribute="bottom" constant="40" id="sK4-fl-XwF"/>
+                            <constraint firstItem="yZc-Hh-XwB" firstAttribute="top" secondItem="opw-0S-N2F" secondAttribute="bottom" constant="40" id="uDr-Jo-VwT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="b1l-f4-iuZ" appends="YES" id="74A-im-mBa"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Daylight" id="Q02-FB-9kp">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="Cqv-45-GKB">
@@ -104,6 +98,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="b1l-f4-iuZ">
+                    <connections>
+                        <segue destination="ffl-TO-3kg" kind="show" identifier="detail" id="eeb-Sn-L1M"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1636.875" y="-88.75"/>
         </scene>
