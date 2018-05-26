@@ -25,6 +25,8 @@ class DetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
 
         if ((data) != nil) {
             self.sunrise.text = DateUtil.convertUTC2TimeWithDate(string:self.data!["sunrise"] as! String)
