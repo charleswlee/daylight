@@ -126,9 +126,11 @@ class DaylightViewController: UIViewController {
         toolBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DaylightViewController.doneClick))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let spaceButton1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let todayButton = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(DaylightViewController.todayClick))
+        let spaceButton2 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(DaylightViewController.cancelClick))
-        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.setItems([cancelButton, spaceButton1,todayButton,spaceButton2, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         textField.inputAccessoryView = toolBar
     }
@@ -138,6 +140,10 @@ class DaylightViewController: UIViewController {
         self.setDate()
         dateTextField.resignFirstResponder()
         self.updateSunriseSunset()
+    }
+    
+    @objc func todayClick() {
+        self.datePicker.setDate(Date(), animated: true)
     }
     
     @objc func cancelClick() {
