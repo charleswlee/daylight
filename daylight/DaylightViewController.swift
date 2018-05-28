@@ -119,6 +119,7 @@ class DaylightViewController: UIViewController {
         self.datePicker = UIDatePicker()
         self.datePicker.datePickerMode = UIDatePickerMode.date
         textField.inputView = self.datePicker
+        self.datePicker.date = self.date
         
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
